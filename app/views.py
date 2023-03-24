@@ -24,3 +24,10 @@ def documentacao_categorias(request):
 @login_required
 def upload(request):
     return render(request, 'app/upload.html')
+
+@login_required
+def projetos(request):
+    return render(request, 'app/projetos.html')
+
+def arquitetonico(request):
+    return render(request, 'app/arquitetonico.html')

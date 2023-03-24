@@ -10,4 +10,7 @@ urlpatterns = [
     path('documentacao/3/', views.documentacao_3, name='documentacao-3'),
     path('documentacao/categorias/', views.documentacao_categorias, name='documentacao-categorias'),
     path('upload/', views.upload, name='upload'),
+    path('projetos/', views.projetos, name='projetos'),
+    path('arquitetonico/', views.arquitetonico, name='arquitetonico'),
+    
 ]
