@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import auth
+
 
 @login_required
 def obras(request):
@@ -31,3 +33,7 @@ def projetos(request):
 
 def arquitetonico(request):
     return render(request, 'app/arquitetonico.html')
+
+def sair(request):
+    auth.logout(request)
+    return redirect('/')

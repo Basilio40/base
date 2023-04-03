@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,6 +123,22 @@ TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 
 USE_TZ = True
+
+#JAZZMIN Settings
+JAZZMIN_SETTINGS = {
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Library",
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "TL SERVIÇOS",
+    # Welcome text on the login screen
+    "welcome_sign": "Área Administrativa",
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "images/Logo_TL_invertido.png",
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "simplex",
+}
 
 
 # Static files (CSS, JavaScript, Images)
