@@ -12,5 +12,6 @@ urlpatterns = [
     path('upload/', views.upload, name='upload'),
     path('projetos/', views.projetos, name='projetos'),
     path('arquitetonico/', views.arquitetonico, name='arquitetonico'),
+    path('sair/', views.sair, name="sair"),
     
 ]
