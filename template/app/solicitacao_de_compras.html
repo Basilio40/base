@@ -10,18 +10,14 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'serem_executados' id %}"><div class="box-title">Serviços <br> Serem Executados</div></a>
+          {% for e in solicitacao_de_compras %}
+            <a href="{{e.solicitacao_compras}}"><div class="box-title">Solicitacao de Compras</div></a>
+          {% endfor %}
+  
+
         </div>
       </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <a href="{% url 'obrigacoes' id %}"><div class="box-title">Obrigações</div></a>
-        </div>
       </div>
-    
     </div>
   </div>
   <div class="btn-float">

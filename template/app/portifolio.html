@@ -10,7 +10,7 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="#"><div class="box-title">Fotos</div></a>
+          <a href="{% url 'fotos' id %}"><div class="box-title">Fotos</div></a>
         </div>
       </div>
       <div class="box">
@@ -18,7 +18,7 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="#"><div class="box-title">Vídeos</div></a>
+          <a href="{% url 'videos' id %}"><div class="box-title">Vídeos</div></a>
         </div>
       </div>
       <div class="box">
@@ -26,7 +26,7 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="#"><div class="box-title">Informações <br> Para <br> Contato</div></a>
+          <a href="{% url 'informacoes_contato' id %}"><div class="box-title">Informações <br> Para <br> Contato</div></a>
         </div>
       </div>
 

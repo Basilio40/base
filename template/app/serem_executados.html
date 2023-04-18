@@ -10,7 +10,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'construtora_cliente' id %}"><div class="box-title">Construtora <br> VS <br> Cliente</div></a>
+          {% for a in serem_executados %}
+            <a href="{{a.caixa_dagua}}"><div class="box-title">Execução</div></a>
+          {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -18,7 +20,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'construtora_terceiro' id %}"><div class="box-title">Construtora <br> Vs <br> 3°S</div></a>
+          {% for a in serem_executados %}
+          <a href="{{a.piscina}}"><div class="box-title">Compras</div></a>
+        {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -26,8 +30,21 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'construtora_fornecedor' id %}"><div class="box-title">Construtora <br> Vs <br> Fornecedores</div></a>
+        {% for a in serem_executados %}
+          <a href="{{a.ramais_esgoto}}"><div class="box-title">Contratações</div></a>
+        {% endfor %}
         </div>
+      </div>
+      <div class="box">
+        <div>
+          <div class="box_icon">
+            <i class="fas fa-folder-open"></i>
+          </div>
+        {% for a in serem_executados %}
+          <a href="{{a.ramais_agua_fria}}"><div class="box-title">ADM</div></a>
+        {% endfor %}
+        </div>
+      </div>
       </div>
     </div>
   </div>

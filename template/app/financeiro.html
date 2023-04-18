@@ -10,7 +10,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'serem_executados' id %}"><div class="box-title">Serviços <br> Serem Executados</div></a>
+          {% for e in financeiro %}
+            <a href="{{e.financeiro}}"><div class="box-title">Cliente e Gerência</div></a>
+          {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -18,10 +20,11 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'obrigacoes' id %}"><div class="box-title">Obrigações</div></a>
+          {% for e in financeiro %}
+          <a href="{{e.financeiro1}}"><div class="box-title">Eng Responsável e Gerência</div></a>
+        {% endfor %}
         </div>
       </div>
-    
     </div>
   </div>
   <div class="btn-float">
