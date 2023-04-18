@@ -5,19 +5,23 @@
   <div>
     <div class="logo"></div>
     <div class="box_container">
-
-     
-      {% for obra in obras %}
       <div class="box">
         <div>
           <div class="box_icon">
-            <i class="fas fa-user-hard-hat"></i>
+            <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'documentacao-1' obra.id %}"><div class="box-title">{{obra.nome}}</div></a>
+          <a href="#"><div class="box-title">Serviços <br> Serem Executados</div></a>
         </div>
       </div>
-      {% endfor %}
-
+      <div class="box">
+        <div>
+          <div class="box_icon">
+            <i class="fas fa-folder-open"></i>
+          </div>
+          <a href="#"><div class="box-title">Obrigações</div></a>
+        </div>
+      </div>
+    
     </div>
   </div>
   <div class="btn-float">
@@ -25,14 +29,4 @@
   </div>
   {% include 'app/TheNavigationBar.html' %}
 </div>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems, options);
-});
-  
-</script>
-
 {% endblock %}

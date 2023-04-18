@@ -10,7 +10,7 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Projectos</div>
+          <a href="{% url 'preliminar' id %}"><div class="box-title">Preliminar <br> Cautelar</div></a>
         </div>
       </div>
       <div class="box">
@@ -18,7 +18,7 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Controle Desenhos</div>
+          <a href="{% url 'aterramento' id %}"><div class="box-title">Aterramento</div></a>
         </div>
       </div>
       <div class="box">
@@ -26,7 +26,7 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Responsabilidade Técnica</div>
+          <a href="{% url 'sondagem' id %}"><div class="box-title">Sondagem Solo</div></a>
         </div>
       </div>
       <div class="box">
@@ -34,7 +34,7 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Certidões</div>
+          <a href="{% url 'arrancamento' id %}"><div class="box-title">Arrancamento</div></a>
         </div>
       </div>
       <div class="box">
@@ -42,13 +42,22 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Segurança do Trabalho</div>
+          <a href="{% url 'estanqueidade' id %}"><div class="box-title">Estanqueidade</div></a>
+          <div class="box-title"></div>
+        </div>
+      </div>
+      <div class="box">
+        <div>
+          <div class="box_icon">
+            <i class="fas fa-folder-open"></i>
+          </div>
+          <a href="{% url 'corpo_prova' id %}"><div class="box-title">Corpos de Prova</div></a>
         </div>
       </div>
     </div>
   </div>
   <div class="btn-float">
-    <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-instagram"></i></a>
+    <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-whatsapp"></i></a>
   </div>
   {% include 'app/TheNavigationBar.html' %}
 </div>

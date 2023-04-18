@@ -10,11 +10,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          {% for a in arquitetonico %}
-            <a href="{{a.planta_baixa}}"><div class="box-title">Planta Baixa</div></a>
+          {% for h in hidraulico %}
+            <a href="{{h.agua_fria}}"><div class="box-title">Agua Fria</div></a>
           {% endfor %}
-  
-
         </div>
       </div>
       <div class="box">
@@ -22,8 +20,8 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          {% for a in arquitetonico %}
-          <a href="{{a.cortes}}"><div class="box-title">Corte</div></a>
+          {% for h in hidraulico %}
+          <a href="{{h.agua_quente}}"><div class="box-title">Agua Quente</div></a>
         {% endfor %}
         </div>
       </div>
@@ -32,8 +30,8 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          {% for a in arquitetonico %}
-          <a href="{{a.Layout}}"><div class="box-title">Layout</div></a>
+          {% for h in hidraulico %}
+          <a href="{{h.pluvial}}"><div class="box-title">Pluvial</div></a>
         {% endfor %}
         </div>
       </div>
@@ -42,7 +40,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Planta de Cobertura</div>
+          {% for h in hidraulico %}
+          <a href="{{h.esgoto}}"><div class="box-title">Esgoto</div></a>
+        {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -50,7 +50,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Fachada</div>
+          {% for h in hidraulico %}
+          <a href="{{h.drenagem}}"><div class="box-title">Drenagem</div></a>
+        {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -58,7 +60,10 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Implantação</div>
+          {% for h in hidraulico %}
+          <a href="{{h.infraestrutura}}"><div class="box-title">Infraestrutura</div></a>
+        {% endfor %}
+          <div class="box-title"></div>
         </div>
       </div>
       <div class="box">
@@ -66,28 +71,12 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Paginação de Piso</div>
+          {% for h in hidraulico %}
+          <a href="{{h.reuso}}"><div class="box-title">Reuso/Cisterna</div></a>
+        {% endfor %}
+          <div class="box-title"></div>
         </div>
       </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <div class="box-title">Memorial Descritivo</div>
-        </div>
-      </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <div class="box-title">Quantitativo</div>
-        </div>
-    
-      </div>
-    </div>
-  </div>
   <div class="btn-float">
     <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-whatsapp"></i></a>
   </div>

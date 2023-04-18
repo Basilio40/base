@@ -10,8 +10,8 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          {% for a in arquitetonico %}
-            <a href="{{a.planta_baixa}}"><div class="box-title">Planta Baixa</div></a>
+          {% for e in eletrico %}
+            <a href="{{e.TUG}}"><div class="box-title">TUG</div></a>
           {% endfor %}
   
 
@@ -22,8 +22,8 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          {% for a in arquitetonico %}
-          <a href="{{a.cortes}}"><div class="box-title">Corte</div></a>
+          {% for e in eletrico %}
+          <a href="{{e.TUE}}"><div class="box-title">TUE</div></a>
         {% endfor %}
         </div>
       </div>
@@ -32,8 +32,8 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          {% for a in arquitetonico %}
-          <a href="{{a.Layout}}"><div class="box-title">Layout</div></a>
+          {% for e in eletrico %}
+          <a href="{{e.alimentacao}}"><div class="box-title">Alimentação</div></a>
         {% endfor %}
         </div>
       </div>
@@ -42,7 +42,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Planta de Cobertura</div>
+          {% for e in eletrico %}
+          <a href="{{e.infraestrutura_eletrica}}"><div class="box-title">Infraestrutura</div></a>
+        {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -50,7 +52,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Fachada</div>
+          {% for e in eletrico %}
+          <a href="{{e.SPDA}}"><div class="box-title">SPDA</div></a>
+        {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -58,7 +62,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Implantação</div>
+          {% for e in eletrico %}
+          <a href="{{e.iluminacao}}"><div class="box-title">Iluminação</div></a>
+        {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -66,25 +72,10 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Paginação de Piso</div>
+          {% for e in eletrico %}
+          <a href="{{e.dados}}"><div class="box-title">Dados</div></a>
+        {% endfor %}
         </div>
-      </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <div class="box-title">Memorial Descritivo</div>
-        </div>
-      </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <div class="box-title">Quantitativo</div>
-        </div>
-    
       </div>
     </div>
   </div>

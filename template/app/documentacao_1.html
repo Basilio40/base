@@ -10,7 +10,42 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'projetos' %}"><div class="box-title">Projetos</div></a>
+
+          <a href="{% url 'projetos' id %}"><div class="box-title">Projetos</div></a>
+          
+        </div>
+        
+      </div>
+      <div class="box">
+        <div>
+          <div class="box_icon">
+            <i class="fas fa-folder-open"></i>
+          </div>
+
+          <a href="{% url 'laudos' id %}"><div class="box-title">Laudos</div></a>
+          
+        </div>
+        
+      </div>
+      <div class="box">
+        <div>
+          <div class="box_icon">
+            <i class="fas fa-folder-open"></i>
+          </div>
+
+          <a href="{% url 'escopo' id %}"><div class="box-title">Escopo</div></a>
+          
+        </div>
+        
+      </div>
+      <div class="box">
+        <div>
+          <div class="box_icon">
+            <i class="fas fa-folder-open"></i>
+          </div>
+
+          <a href="{% url 'contratos' id %}"><div class="box-title">Contratos</div></a>
+          
         </div>
       </div>
       <div class="box">
@@ -18,58 +53,48 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Laudos</div>
+
+          <a href="{% url 'cronogramas' id %}"><div class="box-title">Cronogramas</div></a>
+          
         </div>
+        
       </div>
       <div class="box">
         <div>
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Escopo</div>
+
+          <a href="{% url 'compras' id %}"><div class="box-title">Compras</div></a>
+          
         </div>
+        
       </div>
+
       <div class="box">
         <div>
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Contratos</div>
+
+          <a href="{% url 'servicos' id %}"><div class="box-title">Serviços</div></a>
+          
         </div>
+        
       </div>
+
       <div class="box">
         <div>
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Cronogramas</div>
+
+          <a href="{% url 'portifolio' id %}"><div class="box-title">Portifólio</div></a>
+          
         </div>
+        
       </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <div class="box-title">Compras</div>
-        </div>
-      </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <div class="box-title">Serviços</div>
-        </div>
-      </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <div class="box-title">Portifolio</div>
-        </div>
-      </div>
-    </div>
+
   </div>
   <div class="btn-float">
     <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-whatsapp"></i></a>

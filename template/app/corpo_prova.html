@@ -10,7 +10,11 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'arquitetonico' id %}"><div class="box-title">Arquitetonico</div></a>
+          {% for e in corpo_prova %}
+            <a href="{{e.argamassa}}"><div class="box-title">Argamassa P/ Alvenaria Estrutural</div></a>
+          {% endfor %}
+  
+
         </div>
       </div>
       <div class="box">
@@ -18,7 +22,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'estrutural' id %}"><div class="box-title">Estrutural</div></a>
+          {% for e in corpo_prova %}
+          <a href="{{e.corpo_de_prova}}"><div class="box-title">Corpos de Prova</div></a>
+        {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -26,24 +32,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <a href="{% url 'hidraulico' id %}"><div class="box-title">Hidraulico</div></a>
-        </div>
-      </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <a href="{% url 'eletrico' id %}"><div class="box-title">Eletrico</div></a>
-        </div>
-      </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <a href="{% url 'excepcionais' id %}"><div class="box-title">Excepcionais</div></a>
-          <div class="box-title"></div>
+          {% for e in corpo_prova %}
+          <a href="{{e.asfalto}}"><div class="box-title">Asfalto</div></a>
+        {% endfor %}
         </div>
       </div>
     </div>

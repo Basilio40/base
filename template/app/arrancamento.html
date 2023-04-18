@@ -10,7 +10,11 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Certificado de Materiais</div>
+          {% for e in arrancamento %}
+            <a href="{{e.reboco}}"><div class="box-title">Reboco</div></a>
+          {% endfor %}
+  
+
         </div>
       </div>
       <div class="box">
@@ -18,7 +22,9 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Ensaios de Concreto</div>
+          {% for e in arrancamento %}
+          <a href="{{e.ceramica}}"><div class="box-title">Cerâmica</div></a>
+        {% endfor %}
         </div>
       </div>
       <div class="box">
@@ -26,21 +32,15 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          <div class="box-title">Laudos Topográficos</div>
-        </div>
-      </div>
-      <div class="box">
-        <div>
-          <div class="box_icon">
-            <i class="fas fa-folder-open"></i>
-          </div>
-          <div class="box-title">Relatórios Brocas / Chumbadores</div>
+          {% for e in arrancamento %}
+          <a href="{{e.chumbadores}}"><div class="box-title">Chumbadores</div></a>
+        {% endfor %}
         </div>
       </div>
     </div>
   </div>
   <div class="btn-float">
-    <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-instagram"></i></a>
+    <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-whatsapp"></i></a>
   </div>
   {% include 'app/TheNavigationBar.html' %}
 </div>
