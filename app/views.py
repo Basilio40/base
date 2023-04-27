@@ -18,9 +18,11 @@ def obras(request):
 @login_required
 def documentacao_1(request,id):
     obras = Obras.objects.all()
+    detalhes = Obras.objects.filter(id=id)
     context = {
         'obras': obras,
-        'id':id
+        'id':id,
+        'detalhes':detalhes
     }
     return render(request, 'app/documentacao_1.html',context)
 
