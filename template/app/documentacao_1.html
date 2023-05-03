@@ -12,6 +12,8 @@
               {% for obra in detalhes %}
               <span class="card-title">{{obra.nome}}</span>
               <p>{{obra.logradouro}},{{obra.numero}},{{obra.cidade}}</p>
+              <p>Data de Inicio: {{obra.data_inicio}}</p>
+              <p>Previsão de Término: {{obra.data_prevista}}</p>
               {% endfor %}
             </div>
             <div class="card-action">
