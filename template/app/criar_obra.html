@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="form">
+            <div class="logo"></div>
+          <form method="post" action="{% url 'criar_obra' %}">
+            <h1 class="" style="text-align: center;">Criar Obra</h1>
+            {% csrf_token %}
+            {{criar_obra}}
+            <button type="submit" class="cta cta1">Criar</button>
+          </form>
+        </div>
+    </div>
+      
+  <div class="btn-float">
+    <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  {% include 'app/TheNavigationBar.html' %}
+</div>
+{% endblock %}

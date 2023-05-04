@@ -1,0 +1,7 @@
+from django import forms
+from .models import Obras
+
+class ObrasForm(forms.ModelForm):
+    class Meta:
+        model = Obras
+        fields = ['nome','cep','logradouro','numero','complemento','bairro','estado','cidade','observacao','data_inicio','data_prevista']

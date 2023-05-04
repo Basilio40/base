@@ -16,10 +16,20 @@
           <a href="{% url 'documentacao-1' obra.id %}"><div class="box-title">{{obra.nome}}</div></a>
         </div>
       </div>
+
       {% endfor %}
+      <div class="box">
+        <div>
+          <div class="box_icon">
+            <i class="fas fa-plus"></i>
+          </div>
+          <a href="{% url 'criar_obra' %}"><div class="box-title">Adicionar obra</div></a>
+        </div>
+      </div>
 
     </div>
   </div>
+
   <div class="btn-float">
     <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-whatsapp"></i></a>
   </div>

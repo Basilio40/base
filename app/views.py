@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from .models import Obras
+from .forms import ObrasForm
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 
@@ -10,10 +11,22 @@ from django.http import HttpResponse
 def obras(request):
     obras = Obras.objects.all()
     context = {
-        'obras': obras
+        'obras': obras,
     }
     # return HttpResponse(obras)
     return render(request, 'app/obras.html',context)
+
+@login_required
+def criar_obra(request):
+    context = {
+        'criar_obra':ObrasForm(),
+    }
+    if request.method == 'POST':
+        form = ObrasForm(request.POST)
+        if form.is_valid():
+            form.save()
+    # return HttpResponse(obras)
+    return render(request, 'app/criar_obra.html',context)
 
 @login_required
 def documentacao_1(request,id):
