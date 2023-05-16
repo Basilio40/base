@@ -358,3 +358,9 @@ label.custom-file-upload:hover {
   background: #5865f2;
   color: #fff;
 }
+
+.modal {
+  color: #5865f2;
+  border-color: #5865f2;
+  background: rgba(114, 137, 218, 0.3)
+}

@@ -1,15 +1,32 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from .models import Obras
-from .forms import ObrasForm
+from .models import Obras,Planta
+from .forms import ObrasForm, PlantaForm
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
+from dateutil.parser import parse
+from datetime import datetime
+
 
 
 @login_required
 def obras(request):
+    endereco = request.GET.get('endereco')
+    nome = request.GET.get('nome')
+    data_inicial = request.GET.get('data_inicial')
+    data_final = request.GET.get('data_final')
     obras = Obras.objects.all()
+    
+    if data_inicial and data_final:
+        obras = obras.filter(
+        data_inicio__range =[data_inicial ,data_final]
+    )
+    
+ 
+        
+
+
     context = {
         'obras': obras,
     }
@@ -87,6 +104,20 @@ def arquitetonico(request,id):
         'id':id
     }
     return render(request, 'app/arquitetonico.html',context)
+
+def planta_baixa(request,id):
+    planta = Planta.objects.filter(id=id)
+    context = {
+        'upplanta':PlantaForm(),
+        'planta':planta,
+        'id':id
+    }
+    if request.method == 'POST':
+        form = PlantaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+    return render(request,'app/planta_baixa.html',context )
 
 
 

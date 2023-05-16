@@ -10,10 +10,8 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          {% for a in arquitetonico %}
-            <a href="{{a.planta_baixa}}"><div class="box-title">Planta Baixa</div></a>
-          {% endfor %}
-  
+
+            <a href="{% url 'planta_baixa' id %}"><div class="box-title">Planta Baixa</div></a>
 
         </div>
       </div>

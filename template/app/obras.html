@@ -3,11 +3,20 @@
 {% block content %}
 <div class="container">
   <div>
+    
     <div class="logo"></div>
     <div class="box_container">
 
-     
+  
+        <br>
+        <button type="button" class="cta cta1" data-toggle="modal"
+         data-target="#exampleModal">
+          FILTRAR
+        </button>
+  
+
       {% for obra in obras %}
+
       <div class="box">
         <div>
           <div class="box_icon">
@@ -16,8 +25,10 @@
           <a href="{% url 'documentacao-1' obra.id %}"><div class="box-title">{{obra.nome}}</div></a>
         </div>
       </div>
+    {% endfor %}
 
-      {% endfor %}
+    
+  
       <div class="box">
         <div>
           <div class="box_icon">
@@ -34,6 +45,45 @@
     <a href="https://instagram.com/" target="_blank" class="btn-float"><i class="fab fa-whatsapp"></i></a>
   </div>
   {% include 'app/TheNavigationBar.html' %}
+</div>
+<div class="modal fade" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(68, 70, 79, 0.3)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: rgba(114, 137, 218, 0.3)">
+      <div class="modal-header">
+        <h5 class="modal-title titulo_filtrar" id="exampleModalLabel" >FILTRAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">DATAS</span>
+        </button>
+      </div>
+ 
+      <div class="modal-body">
+        <form action="{% url 'obras' %}" method="GET">
+
+          <!-- <br>
+          <label>Endereço</label>
+          <br>
+          <select name="endereco" class="form-control" >
+
+              {% for obra in obras %}
+                <option  value="{{obra.logradouro}}">{{obra.logradouro}}</option>
+              {% endfor %} 
+          </select>
+          
+              <br>
+              <br> -->
+          <label>Data inicial</label>
+            <input  style="color: aliceblue;" type="date"  class="form-control" name="data_inicial">
+            <br>
+          <label>Data Final</label>
+            <input style="color: aliceblue;" type="date"  class="form-control" name="data_final">
+            <br>
+          <br>
+          <input class="btn_filtrar_modal" type="submit" value="FILTRAR">
+        </form>
+      </div>
+      
+    </div>
+  </div>
 </div>
 
 

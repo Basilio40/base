@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class Imagem(models.Model):
@@ -129,5 +130,18 @@ class Obras(models.Model):
     videos = models.URLField(max_length=200, null=True, blank=True)
     informacoes_contato = models.URLField(max_length=200, null=True, blank=True)
     
+    def data_formatada(self):
+        date = datetime.strptime(str(self.data_inicio), '%d-%m-%Y')
+        return date
+    
     def __str__(self):
         return self.nome
+
+
+class Planta(models.Model):
+    planta = models.URLField(max_length=200, null=True, blank=True)
+    planta_data = models.DateField(auto_now=False, null=True, blank=True)
+    imagens = models.FileField(upload_to='planta')
+    
+
+    
