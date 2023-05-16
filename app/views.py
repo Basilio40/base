@@ -5,8 +5,6 @@ from .models import Obras,Planta
 from .forms import ObrasForm, PlantaForm
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
-from dateutil.parser import parse
-from datetime import datetime
 
 
 
