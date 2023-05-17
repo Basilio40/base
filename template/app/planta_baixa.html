@@ -4,11 +4,20 @@
 <div class="container">
 	<div class="form">
 		<div class="logo"></div>
-	  <form method="post">
+	  <form method="POST">
 		<h1 class="" style="text-align: center;">Planta Baixa</h1>
 		{% csrf_token %}
-        
-        {{upplanta.as_p}}
+        <label>URL</label>
+        <input  style="color: aliceblue;" type="text"  class="form-control" name="planta_url">
+		<br>
+		<br>
+		<label>Data</label>
+		<input  style="color: aliceblue;" type="date"  class="form-control" name="data_imagem">
+		<br>
+		<br>
+		<label>Arquivo</label>
+		<label  style="background-color: rgb(85, 86, 86); border-color:grey" for="fileupload" class="custom-file-upload"><i class="fal fa-file"></i> Escolha um Ficheiro</label>
+		<input  type="file" id="fileupload" placeholder="Select file" name="imagem">
 
         <br>
         <br>
