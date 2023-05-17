@@ -104,6 +104,7 @@ def arquitetonico(request,id):
     return render(request, 'app/arquitetonico.html',context)
 
 def planta_baixa(request,id):
+
     planta = Planta.objects.filter(id=id)
     context = {
         'upplanta':PlantaForm(),
@@ -111,9 +112,11 @@ def planta_baixa(request,id):
         'id':id
     }
     if request.method == 'POST':
-        form = PlantaForm(request.POST)
-        if form.is_valid():
-            form.save()
+        url = request.POST.get('planta_url')
+        data = request.POST.get('data_imagem')
+        imagem = request.POST.get('imagem')
+        form = Planta.objects.create(planta=url,planta_data=data,imagens=imagem)
+        form.save()
             
     return render(request,'app/planta_baixa.html',context )
 
