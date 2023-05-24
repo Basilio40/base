@@ -13,6 +13,7 @@ urlpatterns = [
     path('projetos/<str:id>', views.projetos, name='projetos'),
     path('arquitetonico/<str:id>', views.arquitetonico, name='arquitetonico'),
     path('planta_baixa/<str:id>',views.planta_baixa, name='planta_baixa'),
+    path('planta_imagens/<str:id>',views.planta_imagens, name='planta_imagens'),
     path('estrutural/<str:id>', views.estrutural, name='estrutural'),
     path('hidraulico/<str:id>', views.hidraulico, name='hidraulico'),
     path('eletrico/<str:id>', views.eletrico, name='eletrico'),

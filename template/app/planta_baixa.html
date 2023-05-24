@@ -5,9 +5,10 @@
 	<div class="form">
 		<div class="logo"></div>
 	  <form method="POST">
-		<h1 class="" style="text-align: center;">Planta Baixa</h1>
+		<a href="{% url 'planta_imagens' id %}" target="_blank" style="text-align: center;"><h1><i class="fa fa-file"></i> Ver Planta</h1></a>
+
 		{% csrf_token %}
-        <label>URL</label>
+        <label>Descrição</label>
         <input  style="color: aliceblue;" type="text"  class="form-control" name="planta_url">
 		<br>
 		<br>
@@ -18,13 +19,17 @@
 		<label>Arquivo</label>
 		<label  style="background-color: rgb(85, 86, 86); border-color:grey" for="fileupload" class="custom-file-upload"><i class="fal fa-file"></i> Escolha um Ficheiro</label>
 		<input  type="file" id="fileupload" placeholder="Select file" name="imagem">
-
-        <br>
         <br>
 		<button type="submit" class="cta cta1">Enviar</button>
+	
+		
 	  </form>
 	</div>
+
+	
 </div>
+
+
 <script>
 	setTimeout(()=> {
 		const splashScreen = document.querySelector('.splash')

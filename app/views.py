@@ -120,6 +120,10 @@ def planta_baixa(request,id):
             
     return render(request,'app/planta_baixa.html',context )
 
+def planta_imagens(request,id):
+    planta = Planta.objects.filter(id=id)
+    return render(request,'app/planta_imagens.html',{'planta':planta})
+
 
 
 def estrutural(request,id):

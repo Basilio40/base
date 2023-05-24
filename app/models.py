@@ -139,7 +139,7 @@ class Obras(models.Model):
 
 
 class Planta(models.Model):
-    planta = models.URLField(max_length=200, null=True, blank=True)
+    descricao = models.CharField(max_length=200, null=True, blank=True)
     planta_data = models.DateField(auto_now=False, null=True, blank=True)
     imagens = models.FileField(upload_to='planta')
     

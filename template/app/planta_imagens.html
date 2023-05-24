@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+
+
+{% block content %}
+<div class="container">
+	<div class="form">
+		<div class="logo"></div>
+	  <form method="GET">
+		<h1 style="text-align: center;"> Planta</h1>
+
+        <table >
+
+            <tr>
+                <th>Nome</th>
+            </tr>
+                {% for p in planta %}
+                    <tr>
+                        <td>{{p.imagens}}</td> 
+                    </tr>
+                {% endfor %}
+                </table>
+	
+		
+	  </form>
+	</div>
+
+	
+</div>
+
+
+
+<script>
+	setTimeout(()=> {
+		const splashScreen = document.querySelector('.splash')
+		splashScreen.style.opacity = 0
+		splashScreen.style.height = 0
+	}, 1000)
+</script>
+{% endblock %}
