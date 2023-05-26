@@ -15,16 +15,26 @@
             </tr>
                 {% for p in planta %}
                     <tr>
-                        <td>{{p.imagens}}</td> 
+                        <td>{{p.descricao}}</td> 
+						<td>{{p.planta_data}}</td>
+						<td>{{p.imagens}}</td>
                     </tr>
                 {% endfor %}
                 </table>
-	
-		
-	  </form>
-	</div>
 
-	
+	  </form>
+	</div>	
+</div>
+<div class="box_container">
+<div class="box">
+	<div>
+	  <div class="box_icon">
+		<i class="fas fa-plus"></i>
+	  </div>
+	  <a href="{% url 'planta_baixa' id %}"><div class="box-title">Adicionar planta</div></a>
+	</div>
+  </div>
+
 </div>
 
 

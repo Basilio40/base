@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from .models import Obras,Planta
-from .forms import ObrasForm, PlantaForm
+from .models import Obras,Arquitetonico
+from .forms import ObrasForm
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 
@@ -104,10 +104,9 @@ def arquitetonico(request,id):
     return render(request, 'app/arquitetonico.html',context)
 
 def planta_baixa(request,id):
-
-    planta = Planta.objects.filter(id=id)
+    obra = Obras.objects.filter(id=id)
+    planta = Arquitetonico.objects.filter(id=id)
     context = {
-        'upplanta':PlantaForm(),
         'planta':planta,
         'id':id
     }
@@ -115,14 +114,18 @@ def planta_baixa(request,id):
         url = request.POST.get('planta_url')
         data = request.POST.get('data_imagem')
         imagem = request.POST.get('imagem')
-        form = Planta.objects.create(planta=url,planta_data=data,imagens=imagem)
+        form = Arquitetonico.objects.create(id=id,descricao=url,planta_data=data,imagens=imagem,obra=obra)
         form.save()
             
     return render(request,'app/planta_baixa.html',context )
 
 def planta_imagens(request,id):
-    planta = Planta.objects.filter(id=id)
-    return render(request,'app/planta_imagens.html',{'planta':planta})
+    planta = Arquitetonico.objects.filter(id=id)
+    context = {
+        'planta':planta,
+        'id':id
+    }
+    return render(request,'app/planta_imagens.html',context)
 
 
 

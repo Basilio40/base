@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Obras, Imagem, Planta
+from .models import Obras, Imagem
 
 
 @admin.register(Obras)
@@ -10,4 +10,3 @@ class ObrasAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Imagem)
-admin.site.register(Planta)
