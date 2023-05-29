@@ -9,10 +9,17 @@
 	  <form method="GET">
 		<h1 style="text-align: center;"> Planta</h1>
 
+		  
+        <br>
+        <button type="button" class="cta cta1" data-toggle="modal"
+         data-target="#exampleModal">
+          FILTRAR
+        </button>
+
         <table >
 
             <tr>
-				<th>URL</th>
+				<th>Arquivo</th>
                 <th>Nome</th>
 				<th>Data</th>
             </tr>
@@ -45,6 +52,31 @@
 
 </div>
 
+<div class="modal fade" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(68, 70, 79, 0.3)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: rgba(114, 137, 218, 0.3)">
+      <div class="modal-header">
+        <h5 class="modal-title titulo_filtrar" id="exampleModalLabel" >FILTRAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">DATAS</span>
+        </button>
+      </div>
+
+ 
+      <div class="modal-body">
+        <form action="{% url 'planta_imagens' id %}" method="GET">
+			<label>Data inicial</label>
+            <input  style="color: aliceblue;" type="date"  class="form-control" name="data_inicial">
+            <br>
+          <br>
+          <input class="btn_filtrar_modal" type="submit" value="FILTRAR">
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 
 
 <script>
@@ -53,5 +85,12 @@
 		splashScreen.style.opacity = 0
 		splashScreen.style.height = 0
 	}, 1000)
+</script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	  var elems = document.querySelectorAll('.modal');
+	  var instances = M.Modal.init(elems, options);
+	});
+	  
 </script>
 {% endblock %}

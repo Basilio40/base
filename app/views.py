@@ -126,6 +126,9 @@ def planta_imagens(request,id):
         'planta':planta,
         'id':id
     }
+    data_inicial = request.GET.get('data_inicial')
+    if data_inicial:
+        planta = planta.filter(planta_data=data_inicial)
     return render(request,'app/planta_imagens.html',context)
 
 
