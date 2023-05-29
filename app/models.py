@@ -22,6 +22,13 @@ class Obras(models.Model):
     observacao = models.CharField(max_length=255, null=True, blank=True)
     data_inicio = models.DateField(auto_now=False, null=True, blank=True)
     data_prevista = models.DateField(auto_now=False, null=True, blank=True)
+    # Arquitetonico
+    descricao_planta_baixa = models.CharField(max_length=200, null=True, blank=True)
+    planta_data = models.DateField(auto_now=False, null=True, blank=True)
+    imagem_planta_baixa = models.FileField(upload_to='',null=True, blank=True)
+    descricao_planta_baixa1 = models.CharField(max_length=200, null=True, blank=True)
+    planta_data1 = models.DateField(auto_now=False, null=True, blank=True)
+    imagem_planta_baixa1 = models.FileField(upload_to='',null=True, blank=True)
     
     
     def data_formatada(self):
@@ -31,14 +38,7 @@ class Obras(models.Model):
     def __str__(self):
         return self.nome
     
-    
-    # Arquitetonico
-class Arquitetonico(models.Model):
-    
-    obra = models.ForeignKey(Obras, on_delete=models.DO_NOTHING)
-    descricao = models.CharField(max_length=200, null=True, blank=True)
-    planta_data = models.DateField(auto_now=False, null=True, blank=True)
-    imagens = models.FileField(upload_to='planta')
+
  
     # Estrutural
 

@@ -1,4 +1,5 @@
 {% extends 'app/base.html' %}
+{% load static %}
 
 
 {% block content %}
@@ -11,14 +12,21 @@
         <table >
 
             <tr>
+				<th>URL</th>
                 <th>Nome</th>
+				<th>Data</th>
             </tr>
                 {% for p in planta %}
                     <tr>
-                        <td>{{p.descricao}}</td> 
+						<td width="20%"><a href="{{p.imagem_planta_baixa.url}}" target="_blank"><i class="fal fa-file"></i></a></td> 
+                        <td>{{p.descricao_planta_baixa}}</td>
 						<td>{{p.planta_data}}</td>
-						<td>{{p.imagens}}</td>
                     </tr>
+					<tr>
+						<td width="20%"><a href="{{p.imagem_planta_baixa1.url}}" target="_blank"><i class="fal fa-file"></i></a></td>
+						<td>{{p.descricao_planta_baixa1}}</td> 
+						<td>{{p.planta_data1}}</td>
+					</tr>
                 {% endfor %}
                 </table>
 

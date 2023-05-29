@@ -1,25 +1,24 @@
 {% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container">
 	<div class="form">
 		<div class="logo"></div>
-	  <form method="POST">
+	  <form action="" method="POST" enctype='multipart/form-data'>
 		<a href="{% url 'planta_imagens' id %}" target="_blank" style="text-align: center;"><h1><i class="fa fa-file"></i> Ver Planta</h1></a>
 
 		{% csrf_token %}
         <label>Descrição</label>
-        <input  style="color: aliceblue;" type="text"  class="form-control" name="planta_url">
-		<br>
-		<br>
+		{{planta_f.descricao_planta_baixa}}
+
 		<label>Data</label>
-		<input  style="color: aliceblue;" type="date"  class="form-control" name="data_imagem">
-		<br>
-		<br>
+		{{planta_f.planta_data}}
+
 		<label>Arquivo</label>
 		<label  style="background-color: rgb(85, 86, 86); border-color:grey" for="fileupload" class="custom-file-upload"><i class="fal fa-file"></i> Escolha um Ficheiro</label>
-		<input  type="file" id="fileupload" placeholder="Select file" name="imagem">
-        <br>
+		<input  type="file" id="fileupload" placeholder="Select file" name="imagem" value="{{planta_f.imagem_planta_baixa}}">
+
 		<button type="submit" class="cta cta1">Enviar</button>
 	
 		
