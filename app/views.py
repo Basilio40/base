@@ -21,10 +21,6 @@ def obras(request):
         data_inicio__range =[data_inicial ,data_final]
     )
     
- 
-        
-
-
     context = {
         'obras': obras,
     }
@@ -122,13 +118,14 @@ def planta_baixa(request,id):
 
 def planta_imagens(request,id):
     planta = Obras.objects.filter(id=id)
+    data_inicial = request.GET.get('data_inicial')
+    if data_inicial:
+        planta = planta.filter(planta_data=data_inicial)
     context = {
         'planta':planta,
         'id':id
     }
-    data_inicial = request.GET.get('data_inicial')
-    if data_inicial:
-        planta = planta.filter(planta_data=data_inicial)
+        
     return render(request,'app/planta_imagens.html',context)
 
 
