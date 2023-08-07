@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
     'materialize',
-    'django_extensions',
     'crispy_bootstrap4',
     'crispy_forms',
     'crispy_forms_materialize',

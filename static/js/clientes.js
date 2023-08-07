@@ -1,7 +1,8 @@
 function add_carro(){
     container = document.getElementById('form-carro')
+    
+    html = "<br>  <div class='row'> <div class='col-md'> <input type='text' placeholder='descrição' class='form-control' name='descricao' > </div> <div class='col-md'><input type='date' placeholder='data' class='form-control' name='data' ></div><div><label for='fileupload' class='custom-file-upload'><i class='fal fa-file'></i> Escolha um Ficheiro</label><input type='file' id='fileupload' placeholder='Select file' name='imagem' multiple='multiple'></div></div> </div>"
 
-    html = "<br>  <div class='row'> <div class='col-md'> <input type='text' placeholder='descrição' class='form-control' name='descricao' > </div> <div class='col-md'><input type='date' placeholder='data' class='form-control' name='data' ></div><div><label for='fileupload' class='custom-file-upload'><i class='fal fa-file'></i> Escolha um Ficheiro</label><input type='file' id='fileupload' placeholder='Select file' name='imagem' multiple></div></div> </div>"
 
     container.innerHTML += html
 }
