@@ -23,34 +23,30 @@
                 <th>Nome</th>
 				<th>Data</th>
             </tr>
-                {% for p in planta %}
                     <tr>
-						<td width="20%"><a href="{{p.imagem_planta_baixa.url}}" target="_blank"><i class="fal fa-file"></i></a></td> 
-                        <td>{{p.descricao_planta_baixa}}</td>
-						<td>{{p.planta_data}}</td>
-                    </tr>
-					<tr>
-						<td width="20%"><a href="{{p.imagem_planta_baixa1.url}}" target="_blank"><i class="fal fa-file"></i></a></td>
-						<td>{{p.descricao_planta_baixa1}}</td> 
-						<td>{{p.planta_data1}}</td>
-					</tr>
+                      {% for p in planta %}
+                      <td width="20%"><a href="{{p.img.url}}" target="_blank"><i class="fal fa-file"></i></a></td>
+                      <td>#</td>
+                      <td>#</td>
+                      {% endfor %}
+            {% for p in planta %}
+            <td><button type="button" class="cta cta1" data-toggle="modal" data-target="#ModalDetail">editar</button></td>
+            <td><a href="{% url 'remover_planta' id %}"><button type="button" class="cta" style="background-color: red;">deletar</button></a></td>
+            </tr>
                 {% endfor %}
                 </table>
+                <br>
+                <div>
+                  <td><a href="{% url 'planta_baixa' id %}"><button type="button" class="cta" style="background-color: rgb(0, 179, 255);">Adicionar</button></a></td>
+                </div>
+                 </form>
+                  </div>
+              </div>
+              <br>
+              <input type="submit" value="Cadastrar" class="btn-principal">
 
-	  </form>
-	</div>	
-</div>
-<div class="box_container">
-<div class="box">
-	<div>
-	  <div class="box_icon">
-		<i class="fas fa-plus"></i>
-	  </div>
-	  <a href="{% url 'planta_baixa' id %}"><div class="box-title">Adicionar planta</div></a>
-	</div>
-  </div>
-
-</div>
+    
+  
 
 <div class="modal fade" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(68, 70, 79, 0.3)">
   <div class="modal-dialog" role="document">
@@ -77,7 +73,31 @@
   </div>
 </div>
 
+<div class="modal fade" id="ModalDetail"  tabindex="-1" role="dialog" aria-labelledby="ModalDetailLabel" aria-hidden="true" style="background: rgba(68, 70, 79, 0.3)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: rgba(114, 137, 218, 0.3)">
+      <div class="modal-header">
+        <h5 class="modal-title titulo_filtrar" id="ModalDetailLabel" >EDITAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
 
+      <div class="modal-body">
+        <form action="{% url 'planta_imagens' id %}" method="POST">{% csrf_token %}
+			<label>Editar</label>
+          <br>
+          {% for p in imagens %}
+            <input type="text" value="{{p.descricao}}" name="editar_descricao">
+          {% endfor%}
+          <br>
+          <input class="btn_filtrar_modal" type="submit" value="EDITAR">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/clientes.js' %}"></script>
 
 <script>
 	setTimeout(()=> {

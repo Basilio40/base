@@ -2,11 +2,7 @@ from django.db import models
 from datetime import datetime
 
 # Create your models here.
-class Imagem(models.Model):
-    img = models.FileField(upload_to='img')
 
-    def __str__(self) -> str:
-        return self.img.url
     
     
 class Obras(models.Model):
@@ -23,13 +19,7 @@ class Obras(models.Model):
     data_inicio = models.DateField(auto_now=False, null=True, blank=True)
     data_prevista = models.DateField(auto_now=False, null=True, blank=True)
     # Arquitetonico
-    descricao_planta_baixa = models.CharField(max_length=200, null=True, blank=True)
-    planta_data = models.DateField(auto_now=False, null=True, blank=True)
-    imagem_planta_baixa = models.FileField(upload_to='',null=True, blank=True)
-    descricao_planta_baixa1 = models.CharField(max_length=200, null=True, blank=True)
-    planta_data1 = models.DateField(auto_now=False, null=True, blank=True)
-    imagem_planta_baixa1 = models.FileField(upload_to='',null=True, blank=True)
-    
+
     
     def data_formatada(self):
         date = datetime.strptime(str(self.data_inicio), '%d-%m-%Y')
@@ -39,7 +29,12 @@ class Obras(models.Model):
         return self.nome
     
 
- 
+class Imagem(models.Model):
+    img = models.FileField(upload_to='img')
+    descricao = models.CharField(max_length=200, null=True, blank=True)
+    data = models.DateField(auto_now=False, null=True, blank=True)
+    obra = models.ForeignKey(Obras,on_delete=models.CASCADE,null=True, blank=True)
+
     # Estrutural
 
     #Hidraulico

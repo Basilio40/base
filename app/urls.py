@@ -14,6 +14,7 @@ urlpatterns = [
     path('arquitetonico/<str:id>', views.arquitetonico, name='arquitetonico'),
     path('planta_baixa/<str:id>',views.planta_baixa, name='planta_baixa'),
     path('planta_imagens/<str:id>',views.planta_imagens, name='planta_imagens'),
+    path('remover_planta/<str:id>', views.remover_planta, name="remover_planta"),
     path('estrutural/<str:id>', views.estrutural, name='estrutural'),
     path('hidraulico/<str:id>', views.hidraulico, name='hidraulico'),
     path('eletrico/<str:id>', views.eletrico, name='eletrico'),

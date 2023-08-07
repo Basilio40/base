@@ -1,36 +1,28 @@
 {% extends 'app/base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container">
 	<div class="form">
 		<div class="logo"></div>
-	  <form action="" method="POST" enctype="multipart/form-data">
-		<a href="{% url 'planta_imagens' id %}" target="_blank" style="text-align: center;"><h1><i class="fa fa-file"></i> Ver Planta</h1></a>
+			<form action="{% url 'planta_baixa' id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+				<div class="add-carros">
+				<h3>Imagens</h3>
+				<span class="btn-add-carros" onclick="add_carro()">+ Adicionar um imagens</span>
+				<div id="form-carro">
 
-		{% csrf_token %}
-        <label>Descrição</label>
-		{{planta_f.descricao_planta_baixa}}
-
-		<label>Data</label>
-		{{planta_f.planta_data}}
-
-		<br>
-
-		<label>Arquivo</label>
-		{{planta_f.imagem_planta_baixa |as_crispy_field }}
+				</div>
+	  </div>
+	  <br>
+	  <input type="submit" value="Cadastrar" class="btn-principal">
 
 
-		<br>
-		<br>
+ 			</form>
 
-		<button type="submit" class="cta cta1">Enviar</button>
-	
-		
-	  </form>
+  <script src="{% static '/js/clientes.js' %}"></script>
+
 	</div>
-
-	
 </div>
 
 

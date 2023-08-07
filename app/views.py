@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from .models import Obras
+from .models import Obras, Imagem
 from .forms import ObrasForm,PlantaForm
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
+from django.contrib import messages
 
 
 
@@ -101,6 +102,7 @@ def arquitetonico(request,id):
 
 def planta_baixa(request,id):
     obra = Obras.objects.filter(id=id)
+    obra = get_object_or_404(Obras, id=id)
     planta = Obras.objects.filter(id=id)
 
     context = {
@@ -108,16 +110,30 @@ def planta_baixa(request,id):
         'planta':planta,
         'id':id
     }
-    if request.method == 'POST':
-        planta = Obras.objects.get(id=id)
-        formulario = PlantaForm(request.POST, instance=planta)
-        if formulario.is_valid():
-            formulario.save()
+    if request.method == "GET":
+        return render(request,'app/planta_baixa.html',context)
+    
+    elif request.method == "POST":
+        descricao = request.POST.getlist('descricao')
+        data = request.POST.getlist('data')
+        imagens = request.FILES.getlist('imagem')
+        for imagem_upload in imagens:
+            imagem = Imagem()
+            imagem.img = imagem_upload
+            imagem.save()
+    
+    return HttpResponse("Imagens salvas com sucesso!") 
+    # if request.method == 'POST':
+    #     planta = Obras.objects.get(id=id)
+    #     formulario = PlantaForm(request.POST, instance=planta)
+    #     if formulario.is_valid():
+    #         formulario.save()
             
-    return render(request,'app/planta_baixa.html',context )
+    # return render(request,'app/planta_baixa.html',context )
 
 def planta_imagens(request,id):
     planta = Obras.objects.filter(id=id)
+    obra = get_object_or_404(Obras, id=id)
     data_inicial = request.GET.get('data_inicial')
     if data_inicial:
         planta = planta.filter(planta_data=data_inicial)
@@ -125,10 +141,28 @@ def planta_imagens(request,id):
         'planta':planta,
         'id':id
     }
-        
+
+
+    # EDITAR
+    if request.method == "POST":
+        editar_descricao = request.POST.get('editar_descricao')
+        for item in imagens:
+            item.descricao = editar_descricao
+            item.save()
+            
     return render(request,'app/planta_imagens.html',context)
+    # DELETAR
 
+def remover_planta(request,id,*args,**kwargs):
+    planta = Obras.objects.filter(id=id)
 
+    for item in planta:
+        deletar = item.imagem_planta_baixa
+        deletar.delete()
+        messages.success(request, "Eliminado com Sucesso")
+    return redirect('obras')
+        
+    
 
 def estrutural(request,id):
     estrutural = Obras.objects.filter(id=id)

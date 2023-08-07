@@ -246,6 +246,15 @@ input[type="number"]:focus {
   align-items: center;
 }
 
+.btn-add-imagens{
+
+  background-color: var(--contrast-color);
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
 .box i {
   font-size: 3rem;
   color: var(--buttonbg);
