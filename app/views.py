@@ -116,13 +116,21 @@ def planta_baixa(request,id):
     elif request.method == "POST":
         descricao = request.POST.getlist('descricao')
         data = request.POST.getlist('data')
-        imagens = request.FILES.getlist('imagem')
-        for imagem_upload in imagens:
-            imagem = Imagem()
-            imagem.img = imagem_upload
-            imagem.save()
-    
-    return HttpResponse("Imagens salvas com sucesso!") 
+
+        for n in range(0, len(data)):
+            for imagem_upload in request.FILES.getlist('imagem' + str(n)):
+                
+                imagem = Imagem()
+                imagem.imagem = imagem_upload
+                imagem.data = data[n]
+                imagem.descricao = descricao[n]
+                imagem.obra_id = id;
+                imagem.save()
+            
+
+                
+            
+    return render(request,'app/planta_baixa.html',context )
     # if request.method == 'POST':
     #     planta = Obras.objects.get(id=id)
     #     formulario = PlantaForm(request.POST, instance=planta)

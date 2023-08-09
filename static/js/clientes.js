@@ -1,10 +1,34 @@
 function add_carro(){
     container = document.getElementById('form-carro')
     
-    html = "<br>  <div class='row'> <div class='col-md'> <input type='text' placeholder='descrição' class='form-control' name='descricao' > </div> <div class='col-md'><input type='date' placeholder='data' class='form-control' name='data' ></div><div><label for='fileupload' class='custom-file-upload'><i class='fal fa-file'></i> Escolha um Ficheiro</label><input type='file' id='fileupload' placeholder='Select file' name='imagem' multiple='multiple'></div></div> </div>"
+    n = document.querySelectorAll("input[type=file]").length
+    html = "<br>  " +
+           "<div class='row'> <div class='col-md'> " +
+           "<input type='text' id='img_descricao' placeholder='descrição' class='form-control' name='descricao' ></div>" +
 
+           "<div class='col-md'>"+
+           "<input type='date' id='img_data' placeholder='data' class='form-control' name='data' ></div>" +
+
+           "<div><label for='fileupload"+ n + "' class='custom-file-upload'><i class='fal fa-file'></i> Escolha um Ficheiro</label>" +
+           "<input type='file' id='fileupload"+ n + "' placeholder='Select file' name='imagem"+ n + "' multiple='multiple'></div></div> </div>"
 
     container.innerHTML += html
+}
+
+document.querySelector("input.btn-principal").addEventListener("click", post_img_form)
+function post_img_form(e){
+    e.preventDefault();
+    
+    form = document.querySelector('form');
+    url = new URL(form.action);
+    formData = new FormData(form);
+
+    fetchOptions = {
+        method: form.method,
+        body: formData,
+    };
+
+    fetch(url, fetchOptions);
 }
 
 function exibir_form(tipo){
