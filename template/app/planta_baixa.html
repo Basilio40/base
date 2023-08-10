@@ -9,7 +9,7 @@
 			<form action="{% url 'planta_baixa' id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
 				<div class="add-carros">
 				<h3>Imagens</h3>
-				<span class="btn-add-carros" onclick="add_carro()">+ Adicionar um imagens</span>
+				<button type="button" class="cta cta1" onclick="add_carro()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar um imagens</button>
 				<div id="form-carro">
 				</div>
 				<br>

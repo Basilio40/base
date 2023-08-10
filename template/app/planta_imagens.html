@@ -16,34 +16,38 @@
           FILTRAR
         </button>
 
-        <table >
-
-            <tr>
-				<th>Arquivo</th>
-                <th>Nome</th>
-				<th>Data</th>
+        <table>
+          <tr>
+            <th>Arquivo</th>
+            <th>Descrição</th>
+            <th class="form">Data</th>
+          </tr>
+          {% for i in img %}
+            <tr>   
+            <td width="20%"><a href="{{i.imagem.url}}" target="_blank"><i class="fal fa-file"></i></a></td>
+            <td>{{i.descricao}}</td>
+            <td >{{i.data}}</td>
+            <td><i class="fa fa-pencil" aria-hidden="true" type="button" data-toggle="modal" data-target="#ModalDetail"></i></td>
+            <td><a href="{% url 'remover_planta' id %}"><i type="button" class="fa fa-trash"></i></a></td>
             </tr>
-                    <tr>
-                      {% for p in planta %}
-                      <td width="20%"><a href="{{p.img.url}}" target="_blank"><i class="fal fa-file"></i></a></td>
-                      <td>#</td>
-                      <td>#</td>
-                      {% endfor %}
-            {% for p in planta %}
-            <td><button type="button" class="cta cta1" data-toggle="modal" data-target="#ModalDetail">editar</button></td>
-            <td><a href="{% url 'remover_planta' id %}"><button type="button" class="cta" style="background-color: red;">deletar</button></a></td>
-            </tr>
-                {% endfor %}
+          {% endfor %}
                 </table>
-                <br>
-                <div>
-                  <td><a href="{% url 'planta_baixa' id %}"><button type="button" class="cta" style="background-color: rgb(0, 179, 255);">Adicionar</button></a></td>
-                </div>
+
+          
                  </form>
+
+                 <br>
+                 <div class="box_container">
+                 <div class="box">
+                   <div>
+                     <div class="box_icon">
+                       <i class="fas fa-plus"></i>
+                     </div>
+                     <a href="{% url 'planta_baixa' id %}"><div class="box-title">Adicionar</div></a>
+                   </div>
+                 </div>
                   </div>
               </div>
-              <br>
-              <input type="submit" value="Cadastrar" class="btn-principal">
 
     
   
@@ -86,11 +90,9 @@
         <form action="{% url 'planta_imagens' id %}" method="POST">{% csrf_token %}
 			<label>Editar</label>
           <br>
-          {% for p in imagens %}
-            <input type="text" value="{{p.descricao}}" name="editar_descricao">
-          {% endfor%}
+          {{ form.as_p }}
           <br>
-          <input class="btn_filtrar_modal" type="submit" value="EDITAR">
+          <button type="submit">Salvar</button>
         </form>
       </div>
     </div>

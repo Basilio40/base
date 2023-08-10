@@ -30,7 +30,7 @@ class Obras(models.Model):
     
 
 class Imagem(models.Model):
-    imagem = models.FileField(upload_to='img')
+    imagem = models.FileField(upload_to='img',null=True, blank=True)
     descricao = models.CharField(max_length=200, null=True, blank=True)
     data = models.CharField(max_length=200, null=True, blank=True)
     obra = models.ForeignKey(Obras,on_delete=models.CASCADE,null=True, blank=True)

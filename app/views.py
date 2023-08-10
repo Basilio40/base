@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from .models import Obras, Imagem
-from .forms import ObrasForm,PlantaForm
+from .forms import ObrasForm,PlantaForm,ImageForm
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
@@ -106,7 +106,6 @@ def planta_baixa(request,id):
     planta = Obras.objects.filter(id=id)
 
     context = {
-        'planta_f':PlantaForm(),
         'planta':planta,
         'id':id
     }
@@ -126,9 +125,7 @@ def planta_baixa(request,id):
                 imagem.descricao = descricao[n]
                 imagem.obra_id = id;
                 imagem.save()
-            
-
-                
+          
             
     return render(request,'app/planta_baixa.html',context )
     # if request.method == 'POST':
@@ -141,31 +138,37 @@ def planta_baixa(request,id):
 
 def planta_imagens(request,id):
     planta = Obras.objects.filter(id=id)
+    img = Imagem.objects.filter(obra=id)
     obra = get_object_or_404(Obras, id=id)
     data_inicial = request.GET.get('data_inicial')
     if data_inicial:
         planta = planta.filter(planta_data=data_inicial)
+    # EDITAR
+    if request.method == "POST":
+        form = ImageForm(request.POST, instance=obra)
+        if form.is_valid():
+            form.save()
     context = {
+        'img':img,
         'planta':planta,
         'id':id
     }
 
 
-    # EDITAR
-    if request.method == "POST":
-        editar_descricao = request.POST.get('editar_descricao')
-        for item in imagens:
-            item.descricao = editar_descricao
-            item.save()
+
+        # editar_descricao = request.POST.get('editar_descricao')
+        # for item in img:
+        #     item.descricao = editar_descricao
+        #     item.save()
             
     return render(request,'app/planta_imagens.html',context)
     # DELETAR
 
 def remover_planta(request,id,*args,**kwargs):
-    planta = Obras.objects.filter(id=id)
+    planta = Imagem.objects.filter(obra=id)
 
     for item in planta:
-        deletar = item.imagem_planta_baixa
+        deletar = item.imagem
         deletar.delete()
         messages.success(request, "Eliminado com Sucesso")
     return redirect('obras')
