@@ -101,77 +101,102 @@ def arquitetonico(request,id):
     return render(request, 'app/arquitetonico.html',context)
 
 def planta_baixa(request,id):
-    obra = Obras.objects.filter(id=id)
-    obra = get_object_or_404(Obras, id=id)
     planta = Obras.objects.filter(id=id)
-
-    context = {
+    context = {   
         'planta':planta,
         'id':id
     }
+    
     if request.method == "GET":
         return render(request,'app/planta_baixa.html',context)
     
     elif request.method == "POST":
-        descricao = request.POST.getlist('descricao')
-        data = request.POST.getlist('data')
+        try:
+            descricao = request.POST.getlist('descricao')
+            data = request.POST.getlist('data')
 
-        for n in range(0, len(data)):
-            for imagem_upload in request.FILES.getlist('imagem' + str(n)):
+            for n in range(0, len(data)):
+                for imagem_upload in request.FILES.getlist('imagem' + str(n)):
+                    imagem = Imagem()
+                    
+                    imagem.imagem = imagem_upload
+                    imagem.data = data[n]
+                    imagem.descricao = descricao[n]
+                    imagem.obra_id = id;
+                    
+                    imagem.save()
                 
-                imagem = Imagem()
-                imagem.imagem = imagem_upload
-                imagem.data = data[n]
-                imagem.descricao = descricao[n]
-                imagem.obra_id = id;
-                imagem.save()
-          
-            
-    return render(request,'app/planta_baixa.html',context )
-    # if request.method == 'POST':
-    #     planta = Obras.objects.get(id=id)
-    #     formulario = PlantaForm(request.POST, instance=planta)
-    #     if formulario.is_valid():
-    #         formulario.save()
-            
-    # return render(request,'app/planta_baixa.html',context )
+        except:
+            messages.error(request, "Não foi possível salvar")
+        else:
+            messages.success(request, "Salvos com sucesso")
+
+    context['img'] = Imagem.objects.filter(obra=id)
+    return render(request,'app/planta_imagens.html', context)
+
 
 def planta_imagens(request,id):
     planta = Obras.objects.filter(id=id)
-    img = Imagem.objects.filter(obra=id)
-    obra = get_object_or_404(Obras, id=id)
+    
+    # Filtro
     data_inicial = request.GET.get('data_inicial')
     if data_inicial:
-        planta = planta.filter(planta_data=data_inicial)
-    # EDITAR
+        planta = planta.filter(data_inicio=data_inicial)
+        
+    else:
+        data_inicial = "0000-00-00"
+    
+    # Edição
     if request.method == "POST":
-        form = ImageForm(request.POST, instance=obra)
-        if form.is_valid():
-            form.save()
+        img_id = request.POST.get('img_id')
+        
+        if img_id:
+            query = Imagem.objects.filter(id=img_id)
+            
+            if query.exists():
+                img_editada = query.get()
+                
+                n_descricao = request.POST.get("descricao")
+                if n_descricao:
+                    img_editada.descricao = n_descricao
+                
+                n_data = request.POST.get("data")
+                if n_data:
+                    img_editada.data = n_data
+                
+                n_image = request.FILES.get("imagem")
+                if n_image:
+                    img_editada.imagem = n_image
+                
+                img_editada.save()
+    
+    img = Imagem.objects.filter(obra=id, data__gte=data_inicial)
     context = {
         'img':img,
         'planta':planta,
-        'id':id
+        'id':id,
+        'messages': messages.get_messages(request)
     }
-
-
-
-        # editar_descricao = request.POST.get('editar_descricao')
-        # for item in img:
-        #     item.descricao = editar_descricao
-        #     item.save()
-            
     return render(request,'app/planta_imagens.html',context)
-    # DELETAR
 
-def remover_planta(request,id,*args,**kwargs):
-    planta = Imagem.objects.filter(obra=id)
 
+            
+# DELETAR
+def remover_planta(request,*args,**kwargs):
+    planta = Imagem.objects.filter(id=kwargs["id"])
+    
     for item in planta:
         deletar = item.imagem
         deletar.delete()
-        messages.success(request, "Eliminado com Sucesso")
-    return redirect('obras')
+        messages.warning(request, "Eliminado com Sucesso")
+    
+    context = {
+        'id': kwargs["ob"],
+        'img': Imagem.objects.filter(obra=kwargs["ob"]),
+        'messages': messages.get_messages(request)
+    }
+    
+    return render(request, f'app/{kwargs["name"]}.html', context)
         
     
 

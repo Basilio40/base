@@ -3,9 +3,26 @@
 
 
 {% block content %}
+<script>
+  function setImgId(id) { document.querySelector('#ModalDetail').querySelector('#img_id').value = id; }
+</script>
 <div class="container">
 	<div class="form">
 		<div class="logo"></div>
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+          <div class="alert-danger alert-success">{{ message }}</div>
+
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+          <div class="alert-danger alert-warning">{{ message }}</div>
+
+        {% else %}
+          <div class="alert-danger">{{ message }}</div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
 	  <form method="GET">
 		<h1 style="text-align: center;"> Planta</h1>
 
@@ -23,12 +40,19 @@
             <th class="form">Data</th>
           </tr>
           {% for i in img %}
-            <tr>   
-            <td width="20%"><a href="{{i.imagem.url}}" target="_blank"><i class="fal fa-file"></i></a></td>
+            <tr>
+            {% if i.imagem %}
+              <td width="20%"><a href="{{i.imagem.url}}" target="_blank"><i class="fal fa-file"></i></a></td>
+            {% endif %}
+          
+            {% if not i.imagem %}
+              <td width="20%">x</td>
+            {% endif%}
+
             <td>{{i.descricao}}</td>
             <td >{{i.data}}</td>
-            <td><i class="fa fa-pencil" aria-hidden="true" type="button" data-toggle="modal" data-target="#ModalDetail"></i></td>
-            <td><a href="{% url 'remover_planta' id %}"><i type="button" class="fa fa-trash"></i></a></td>
+            <td><i onclick="setImgId('{{i.id}}')" class="fa fa-pencil" aria-hidden="true" type="button" data-toggle="modal" data-target="#ModalDetail"></i></td>
+            <td><a href="{% url 'remover_planta' id i.id 'planta_imagens' %}"><i type="button" class="fa fa-trash"></i></a></td>
             </tr>
           {% endfor %}
                 </table>
@@ -87,12 +111,28 @@
       </div>
 
       <div class="modal-body">
-        <form action="{% url 'planta_imagens' id %}" method="POST">{% csrf_token %}
-			<label>Editar</label>
-          <br>
-          {{ form.as_p }}
-          <br>
-          <button type="submit">Salvar</button>
+        <p>Deixe em branco os campos que não serão alterados</p>
+        <form action="{% url 'planta_imagens' id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+          <input hidden type="text" id='img_id' name="img_id" value="">
+          <div class='row'>
+            <div class='col-md'>
+              <label>Descrição</label>
+              <input style="color: aliceblue;" type='text' id='img_descricao' placeholder='descrição' class='form-control' name='descricao' >
+            </div>
+
+            <div class='col-md'>
+              <label>Nova data</label>
+              <input style="color: aliceblue;" type='date' id='img_data' placeholder='data' class='form-control' name='data' >
+            </div>
+            <div>
+              <label for='fileupload' class='custom-file-upload'><i class='fal fa-file'></i> Escolha um Ficheiro</label>
+              <input type='file' id='fileupload' placeholder='Select file' name='imagem'></div></div>
+            </div>
+            <br>
+            {{ form.as_p }}
+            <br>
+            <button type="submit">Salvar</button>
+          </div>
         </form>
       </div>
     </div>
