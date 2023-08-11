@@ -37,7 +37,11 @@ def criar_obra(request):
         form = ObrasForm(request.POST)
         if form.is_valid():
             form.save()
-    # return HttpResponse(obras)
+            messages.success(request, "Obra adicionada com sucesso!")
+        else:
+            messages.error(request, "Não foi possível adicionar a obra")
+
+    context["messages"] = messages.get_messages(request)
     return render(request, 'app/criar_obra.html',context)
 
 @login_required
