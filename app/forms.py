@@ -1,5 +1,5 @@
 from django import forms
-from .models import Obras, Imagem
+from .models import Obras, Imagem,  ImageCortes
 
 class ObrasForm(forms.ModelForm):
     class Meta:
@@ -20,4 +20,11 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = Imagem
         fields = '__all__'
+
+class CorteForm(forms.ModelForm):
+    
+    class Meta:
+        model = ImageCortes
+        fields = '__all__'
+            
             
