@@ -14,7 +14,11 @@ urlpatterns = [
     path('arquitetonico/<str:id>', views.arquitetonico, name='arquitetonico'),
     path('planta_baixa/<str:id>',views.planta_baixa, name='planta_baixa'),
     path('planta_imagens/<str:id>',views.planta_imagens, name='planta_imagens'),
-    path('remover_planta/<str:ob>?<str:id>?<str:name>', views.remover_planta, name="remover_planta"),
+    path('remover_planta/<str:ob>?<str:id>?<str:name>', views.remover_cortes, name="remover_planta"),
+    path('cortes/<str:id>',views.cortes, name='cortes'),
+    path('corte_imagens/<str:id>',views.corte_imagens, name='corte_imagens'),
+    path('remover_cortes/<str:ob>?<str:id>?<str:name>', views.remover_cortes, name="remover_cortes"),
+    
     path('estrutural/<str:id>', views.estrutural, name='estrutural'),
     path('hidraulico/<str:id>', views.hidraulico, name='hidraulico'),
     path('eletrico/<str:id>', views.eletrico, name='eletrico'),

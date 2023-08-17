@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+	<div class="form">
+		<div class="logo"></div>
+			<form action="{% url 'cortes' id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+				<div class="add-carros">
+					<h3>Imagens</h3>
+					<button type="button" class="cta cta1" onclick="add_carro()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar um imagens</button>
+					<div id="form-carro">
+					</div>
+					<br>
+				
+					<button class="btn_filtrar_modal" type="submit">CADASTRAR</button>
+				</div>
+ 			</form>
+			<a href="{% url 'documentacao-1' id %}">
+				<button class="btn_filtrar_modal">Cancelar</button>
+			</a>
+
+  <script src="{% static '/js/clientes.js' %}"></script>
+
+	</div>
+</div>
+
+
+<script>
+	setTimeout(()=> {
+		const splashScreen = document.querySelector('.splash')
+		splashScreen.style.opacity = 0
+		splashScreen.style.height = 0
+	}, 1000)
+</script>
+{% endblock %}

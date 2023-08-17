@@ -20,9 +20,7 @@
           <div class="box_icon">
             <i class="fas fa-folder-open"></i>
           </div>
-          {% for a in arquitetonico %}
-          <a href="{{a.cortes}}"><div class="box-title">Corte</div></a>
-        {% endfor %}
+          <a href="{% url 'cortes' id %}"><div class="box-title">Corte</div></a>
         </div>
       </div>
       <div class="box">

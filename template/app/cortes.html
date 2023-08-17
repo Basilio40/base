@@ -1,0 +1,158 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<script>
+  function setImgId(id) { document.querySelector('#ModalDetail').querySelector('#img_id').value = id; }
+</script>
+<div class="container">
+	<div class="form">
+		<div class="logo"></div>
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+          <div class="alert-danger alert-success">{{ message }}</div>
+
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+          <div class="alert-danger alert-warning">{{ message }}</div>
+
+        {% else %}
+          <div class="alert-danger">{{ message }}</div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
+	  <form method="GET">
+		<h1 style="text-align: center;"> Cortes</h1>
+
+		  
+        <br>
+        <button type="button" class="cta cta1" data-toggle="modal"
+         data-target="#exampleModal">
+          FILTRAR
+        </button>
+
+        <table>
+          <tr>
+            <th>Arquivo</th>
+            <th>Descrição</th>
+            <th class="form">Data</th>
+          </tr>
+          {% for i in img %}
+            <tr>
+            {% if i.imagem %}
+              <td width="20%"><a href="{{i.imagem.url}}" target="_blank"><i class="fal fa-file"></i></a></td>
+            {% endif %}
+          
+            {% if not i.imagem %}
+              <td width="20%">x</td>
+            {% endif%}
+
+            <td>{{i.descricao}}</td>
+            <td >{{i.data}}</td>
+            <td><i onclick="setImgId('{{i.id}}')" class="fa fa-pencil" aria-hidden="true" type="button" data-toggle="modal" data-target="#ModalDetail"></i></td>
+            <td><a href="{% url 'remover_cortes' id i.id 'corte_imagens' %}"><i type="button" class="fa fa-trash"></i></a></td>
+            </tr>
+          {% endfor %}
+                </table>
+
+          
+                 </form>
+
+                 <br>
+                 <div class="box_container">
+                 <div class="box">
+                   <div>
+                     <div class="box_icon">
+                       <i class="fas fa-plus"></i>
+                     </div>
+                     <a href="{% url 'corte_imagens' id %}"><div class="box-title">Adicionar</div></a>
+                   </div>
+                 </div>
+                  </div>
+              </div>
+
+    
+  
+
+<div class="modal fade" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(68, 70, 79, 0.3)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: rgba(114, 137, 218, 0.3)">
+      <div class="modal-header">
+        <h5 class="modal-title titulo_filtrar" id="exampleModalLabel" >FILTRAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">DATAS</span>
+        </button>
+      </div>
+
+ 
+      <div class="modal-body">
+        <form action="{% url 'corte_imagens' id %}" method="GET">
+			<label>Data inicial</label>
+            <input  style="color: aliceblue;" type="date"  class="form-control" name="data_inicial">
+            <br>
+          <br>
+          <input class="btn_filtrar_modal" type="submit" value="FILTRAR">
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ModalDetail"  tabindex="-1" role="dialog" aria-labelledby="ModalDetailLabel" aria-hidden="true" style="background: rgba(68, 70, 79, 0.3)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: rgba(114, 137, 218, 0.3)">
+      <div class="modal-header">
+        <h5 class="modal-title titulo_filtrar" id="ModalDetailLabel" >EDITAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p>Deixe em branco os campos que não serão alterados</p>
+        <form action="{% url 'corte_imagens' id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+          <input hidden type="text" id='img_id' name="img_id" value="">
+          <div class='row'>
+            <div class='col-md'>
+              <label>Descrição</label>
+              <input style="color: aliceblue;" type='text' id='img_descricao' placeholder='descrição' class='form-control' name='descricao' >
+            </div>
+
+            <div class='col-md'>
+              <label>Nova data</label>
+              <input style="color: aliceblue;" type='date' id='img_data' placeholder='data' class='form-control' name='data' >
+            </div>
+            <div>
+              <label for='fileupload' class='custom-file-upload'><i class='fal fa-file'></i> Escolha um Ficheiro</label>
+              <input type='file' id='fileupload' placeholder='Select file' name='imagem'></div></div>
+            </div>
+            <br>
+            {{ form.as_p }}
+            <br>
+            <button type="submit">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/cortes.js' %}"></script>
+
+<script>
+	setTimeout(()=> {
+		const splashScreen = document.querySelector('.splash')
+		splashScreen.style.opacity = 0
+		splashScreen.style.height = 0
+	}, 1000)
+</script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	  var elems = document.querySelectorAll('.modal');
+	  var instances = M.Modal.init(elems, options);
+	});
+	  
+</script>
+{% endblock %}

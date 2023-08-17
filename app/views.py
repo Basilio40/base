@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from .models import Obras, Imagem
+from .models import Obras, Imagem,ImageCortes
 from .forms import ObrasForm,PlantaForm,ImageForm
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
@@ -201,7 +201,104 @@ def remover_planta(request,*args,**kwargs):
     }
     
     return render(request, f'app/{kwargs["name"]}.html', context)
+
+def cortes(request,id):
+    corte = Obras.objects.filter(id=id)
+    context = {   
+        'corte':corte,
+        'id':id
+    }
+    
+    if request.method == "GET":
+        return render(request,'app/cortes.html',context)
+    
+    elif request.method == "POST":
+        try:
+            descricao = request.POST.getlist('descricao')
+            data = request.POST.getlist('data')
+
+            for n in range(0, len(data)):
+                for imagem_upload in request.FILES.getlist('imagem' + str(n)):
+                    imagem = ImageCortes()
+                    
+                    imagem.imagem = imagem_upload
+                    imagem.data = data[n]
+                    imagem.descricao = descricao[n]
+                    imagem.obra_id = id;
+                    
+                    imagem.save()
+                
+        except:
+            messages.error(request, "Não foi possível salvar")
+        else:
+            messages.success(request, "Salvos com sucesso")
+
+    context['img'] = ImageCortes.objects.filter(obra=id)
+    return render(request,'app/cortes.html', context)
+
+
+def corte_imagens(request,id):
+    corte = Obras.objects.filter(id=id)
+    
+    # Filtro
+    data_inicial = request.GET.get('data_inicial')
+    if data_inicial:
+        corte = corte.filter(data_inicio=data_inicial)
         
+    else:
+        data_inicial = "0000-00-00"
+    
+    # Edição
+    if request.method == "POST":
+        img_id = request.POST.get('img_id')
+        
+        if img_id:
+            query = ImageCortes.objects.filter(id=img_id)
+            
+            if query.exists():
+                img_editada = query.get()
+                
+                n_descricao = request.POST.get("descricao")
+                if n_descricao:
+                    img_editada.descricao = n_descricao
+                
+                n_data = request.POST.get("data")
+                if n_data:
+                    img_editada.data = n_data
+                
+                n_image = request.FILES.get("imagem")
+                if n_image:
+                    img_editada.imagem = n_image
+                
+                img_editada.save()
+    
+    img = ImageCortes.objects.filter(obra=id, data__gte=data_inicial)
+    context = {
+        'img':img,
+        'corte':corte,
+        'id':id,
+        'messages': messages.get_messages(request)
+    }
+    return render(request,'app/corte_imagens.html',context)
+
+
+            
+# DELETAR
+def remover_cortes(request,*args,**kwargs):
+    corte = ImageCortes.objects.filter(id=kwargs["id"])
+    
+    for item in corte:
+        deletar = item.imagem
+        deletar.delete()
+        messages.warning(request, "Eliminado com Sucesso")
+    
+    context = {
+        'id': kwargs["ob"],
+        'img': Imagem.objects.filter(obra=kwargs["ob"]),
+        'messages': messages.get_messages(request)
+    }
+    
+    return render(request, f'app/{kwargs["name"]}.html', context)        
     
 
 def estrutural(request,id):
