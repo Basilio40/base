@@ -71,6 +71,16 @@ button:hover,
   border-radius: 5px;
 }
 
+.alert-success {
+  background: #dfffdf !important;
+  color: #23272a !important;
+}
+
+.alert-warning {
+  background: #ffe08a !important;
+  color: #23272a !important;
+}
+
 body {
   background: linear-gradient(90deg, var(--bgcolor1), var(--bgcolor2));
   color: var(--bodytext);
