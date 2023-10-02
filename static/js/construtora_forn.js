@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_construtora_forn(){
+    container = document.getElementById('form-construtora_forn')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

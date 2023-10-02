@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_chumbadores(){
+    container = document.getElementById('form-chumbadores')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

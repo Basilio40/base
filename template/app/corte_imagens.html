@@ -7,10 +7,10 @@
 	<div class="form">
 		<div class="logo"></div>
 			<form action="{% url 'cortes' id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
-				<div class="add-carros">
+				<div class="form-corte">
 					<h3>Imagens</h3>
-					<button type="button" class="cta cta1" onclick="add_carro()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar um imagens</button>
-					<div id="form-carro">
+					<button type="button" class="cta cta1" onclick="add_cortes()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar um imagens</button>
+					<div id="form-corte">
 					</div>
 					<br>
 				
@@ -21,7 +21,7 @@
 				<button class="btn_filtrar_modal">Cancelar</button>
 			</a>
 
-  <script src="{% static '/js/clientes.js' %}"></script>
+  <script src="{% static 'js/cortes.js' %}"></script>
 
 	</div>
 </div>

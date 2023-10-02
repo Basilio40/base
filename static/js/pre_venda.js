@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_pre_venda(){
+    container = document.getElementById('form-pre_venda')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

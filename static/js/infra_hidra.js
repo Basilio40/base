@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_infra_hidra(){
+    container = document.getElementById('form-infra_hidra')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

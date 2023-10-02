@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_caixa(){
+    container = document.getElementById('form-caixa')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

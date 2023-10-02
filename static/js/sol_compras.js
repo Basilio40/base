@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_sol_compras(){
+    container = document.getElementById('form-sol_compras')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

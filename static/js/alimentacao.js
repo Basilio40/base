@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_alimentacao(){
+    container = document.getElementById('form-alimentacao')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

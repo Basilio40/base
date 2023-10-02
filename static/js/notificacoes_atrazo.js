@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_notificacoes_atrazo(){
+    container = document.getElementById('form-notificacoes_atrazo')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

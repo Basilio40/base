@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_ramais_e(){
+    container = document.getElementById('form-ramais_e')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

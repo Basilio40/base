@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_pluvial(){
+    container = document.getElementById('form-pluvial')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

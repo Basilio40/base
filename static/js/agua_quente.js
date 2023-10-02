@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_agua_quente(){
+    container = document.getElementById('form-agua_quente')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

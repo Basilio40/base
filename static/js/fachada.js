@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_fachada(){
+    container = document.getElementById('form-fachada')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

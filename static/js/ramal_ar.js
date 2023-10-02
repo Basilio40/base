@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_ramal_ar(){
+    container = document.getElementById('form-ramal_ar')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

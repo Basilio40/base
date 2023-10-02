@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_loc_infra(){
+    container = document.getElementById('form-loc_infra')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

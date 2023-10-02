@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_tabela_precos(){
+    container = document.getElementById('form-tabela_precos')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

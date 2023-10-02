@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_plano_macro(){
+    container = document.getElementById('form-plano_macro')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_checklist(){
+    container = document.getElementById('form-checklist')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

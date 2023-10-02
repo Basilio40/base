@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_p_cobertura(){
+    container = document.getElementById('form-p_cobertura')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

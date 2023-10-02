@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_jardinagem(){
+    container = document.getElementById('form-jardinagem')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

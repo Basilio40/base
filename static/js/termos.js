@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_termos(){
+    container = document.getElementById('form-termos')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

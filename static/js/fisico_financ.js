@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_fisico_financ(){
+    container = document.getElementById('form-fisico_financ')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +

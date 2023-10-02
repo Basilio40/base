@@ -1,5 +1,5 @@
-function add_cortes(){
-    container = document.getElementById('form-corte')
+function add_drenagem(){
+    container = document.getElementById('form-drenagem')
     
     n = document.querySelectorAll("input[type=file]").length
     html = "<br>  " +
